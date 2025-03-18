@@ -993,8 +993,6 @@ type joinedStudioTagsHandler struct {
 	criterion *models.HierarchicalMultiCriterionInput
 
 	primaryTable   string // eg scenes
-	joinTable      string // eg performers_scenes
-	joinPrimaryKey string // eg scene_id
 }
 
 func (h *joinedStudioTagsHandler) handle(ctx context.Context, f *filterBuilder) {
