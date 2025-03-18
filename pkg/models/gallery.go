@@ -35,6 +35,8 @@ type GalleryFilterType struct {
 	TagCount *IntCriterionInput `json:"tag_count"`
 	// Filter to only include galleries with performers with these tags
 	PerformerTags *HierarchicalMultiCriterionInput `json:"performer_tags"`
+	// Filter to only include galleries with studios  with these tags
+	StudioTags *HierarchicalMultiCriterionInput `json:"studio_tags"`
 	// Filter to only include galleries with these performers
 	Performers *MultiCriterionInput `json:"performers"`
 	// Filter by performer count
