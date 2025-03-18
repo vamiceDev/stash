@@ -1024,8 +1024,8 @@ func (h *joinedStudioTagsHandler) handle(ctx context.Context, f *filterBuilder) 
 				notClause = "NOT"
 			}
 
-			f.addLeftJoin(h.joinTable, "", utils.StrFormat("{primaryTable}.id = {joinTable}.{joinPrimaryKey}", strFormatMap))
-			f.addLeftJoin("studios_tags", "", utils.StrFormat("{joinTable}.studio_id = studios_tags.studio_id", strFormatMap))
+			//f.addLeftJoin(h.joinTable, "", utils.StrFormat("{primaryTable}.id = {joinTable}.{joinPrimaryKey}", strFormatMap))
+			f.addLeftJoin("studios_tags", "", utils.StrFormat("{primaryTable}.studio_id = studios_tags.studio_id", strFormatMap))
 
 			f.addWhere(fmt.Sprintf("studios_tags.tag_id IS %s NULL", notClause))
 			return
