@@ -241,6 +241,7 @@ export type InputType =
   | "studios"
   | "tags"
   | "performer_tags"
+  | "studio_tags"
   | "scenes"
   | "scene_tags"
   | "groups"
