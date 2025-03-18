@@ -650,6 +650,8 @@ input ImageFilterType {
   tag_count: IntCriterionInput
   "Filter to only include images with performers with these tags"
   performer_tags: HierarchicalMultiCriterionInput
+  "Filter to only include images with studios with these tags"
+  studio_tags: HierarchicalMultiCriterionInput
   "Filter to only include images with these performers"
   performers: MultiCriterionInput
   "Filter by performer count"
