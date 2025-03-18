@@ -296,6 +296,5 @@ func (qb *imageFilterHandler) studioTagsCriterionHandler(tags *models.Hierarchic
 	return &joinedStudioTagsHandler{
 		criterion:      tags,
 		primaryTable:   imageTable,
-		joinPrimaryKey: imageIDColumn,
 	}
 }
