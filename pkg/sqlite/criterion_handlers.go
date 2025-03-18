@@ -1032,11 +1032,11 @@ func (h *joinedStudioTagsHandler) handle(ctx context.Context, f *filterBuilder) 
 		}
 
 		if len(criterion.Value) > 0 {
-			valuesClause, err := getHierarchicalValues(ctx, criterion.Value, tagTable, "tags_relations", "", "", criterion.Depth)
-			if err != nil {
-				f.setError(err)
-				return
-			}
+			// valuesClause, err := getHierarchicalValues(ctx, criterion.Value, tagTable, "tags_relations", "", "", criterion.Depth)
+			// if err != nil {
+			// 	f.setError(err)
+			// 	return
+			// }
 			
 // 			f.addWith(utils.StrFormat(`studios_tags AS (
 // SELECT ps.{joinPrimaryKey} as primaryID, t.column1 AS root_tag_id FROM {joinTable} ps
