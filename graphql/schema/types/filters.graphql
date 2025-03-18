@@ -280,6 +280,8 @@ input SceneFilterType {
   tag_count: IntCriterionInput
   "Filter to only include scenes with performers with these tags"
   performer_tags: HierarchicalMultiCriterionInput
+  "Filter to only include scenes with studios with these tags"
+  studio_tags: HierarchicalMultiCriterionInput
   "Filter scenes that have performers that have been favorited"
   performer_favorite: Boolean
   "Filter scenes by performer age at time of scene"
@@ -499,6 +501,8 @@ input GalleryFilterType {
   tag_count: IntCriterionInput
   "Filter to only include galleries with performers with these tags"
   performer_tags: HierarchicalMultiCriterionInput
+  "Filter to only include scenes with studios with these tags"
+  studio_tags: HierarchicalMultiCriterionInput
   "Filter to only include galleries with these performers"
   performers: MultiCriterionInput
   "Filter by performer count"
