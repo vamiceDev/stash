@@ -39,6 +39,8 @@ type ImageFilterType struct {
 	TagCount *IntCriterionInput `json:"tag_count"`
 	// Filter to only include images with performers with these tags
 	PerformerTags *HierarchicalMultiCriterionInput `json:"performer_tags"`
+	// Filter to only include images with performers with these tags
+	StudioTags *HierarchicalMultiCriterionInput `json:"performer_tags"`
 	// Filter to only include images with these performers
 	Performers *MultiCriterionInput `json:"performers"`
 	// Filter by performer count
