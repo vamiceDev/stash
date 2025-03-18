@@ -86,6 +86,7 @@ func (qb *imageFilterHandler) criterionHandler() criterionHandler {
 		qb.performerCountCriterionHandler(imageFilter.PerformerCount),
 		studioCriterionHandler(imageTable, imageFilter.Studios),
 		qb.performerTagsCriterionHandler(imageFilter.PerformerTags),
+		qb.studioTagsCriterionHandler(imageFilter.StudioTags),
 		qb.performerFavoriteCriterionHandler(imageFilter.PerformerFavorite),
 		qb.performerAgeCriterionHandler(imageFilter.PerformerAge),
 		&timestampCriterionHandler{imageFilter.CreatedAt, "images.created_at", nil},
@@ -287,6 +288,15 @@ func (qb *imageFilterHandler) performerTagsCriterionHandler(tags *models.Hierarc
 		criterion:      tags,
 		primaryTable:   imageTable,
 		joinTable:      performersImagesTable,
+		joinPrimaryKey: imageIDColumn,
+	}
+}
+
+func (qb *imageFilterHandler) studioTagsCriterionHandler(tags *models.HierarchicalMultiCriterionInput) criterionHandler {
+	return &joinedPerformerTagsHandler{
+		criterion:      tags,
+		primaryTable:   imageTable,
+		joinTable:      studiosImagesTable,
 		joinPrimaryKey: imageIDColumn,
 	}
 }
