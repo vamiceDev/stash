@@ -370,6 +370,13 @@ func (qb *galleryFilterHandler) performerTagsCriterionHandler(tags *models.Hiera
 	}
 }
 
+func (qb *galleryFilterHandler) studioTagsCriterionHandler(tags *models.HierarchicalMultiCriterionInput) criterionHandler {
+	return &joinedStudioTagsHandler{
+		criterion:      tags,
+		primaryTable:   imageTable,
+	}
+}
+
 func (qb *galleryFilterHandler) performerFavoriteCriterionHandler(performerfavorite *bool) criterionHandlerFunc {
 	return func(ctx context.Context, f *filterBuilder) {
 		if performerfavorite != nil {
