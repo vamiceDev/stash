@@ -20,7 +20,7 @@ import { StudiosCriterionOption } from "./criteria/studios";
 import { InteractiveCriterionOption } from "./criteria/interactive";
 import {
   PerformerTagsCriterionOption,
-  // StudioTagsCriterionOption,
+  StudioTagsCriterionOption,
   TagsCriterionOption,
 } from "./criteria/tags";
 import { ListFilterOptions, MediaSortByOptions } from "./filter-options";
