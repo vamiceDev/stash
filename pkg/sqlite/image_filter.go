@@ -293,10 +293,9 @@ func (qb *imageFilterHandler) performerTagsCriterionHandler(tags *models.Hierarc
 }
 
 func (qb *imageFilterHandler) studioTagsCriterionHandler(tags *models.HierarchicalMultiCriterionInput) criterionHandler {
-	return &joinedPerformerTagsHandler{
+	return &joinedStudioTagsHandler{
 		criterion:      tags,
 		primaryTable:   imageTable,
-		joinTable:      studiosImagesTable,
 		joinPrimaryKey: imageIDColumn,
 	}
 }
