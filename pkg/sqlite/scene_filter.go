@@ -528,6 +528,14 @@ func (qb *sceneFilterHandler) performerTagsCriterionHandler(tags *models.Hierarc
 	}
 }
 
+
+func (qb *sceneFilterHandler) studioTagsCriterionHandler(tags *models.HierarchicalMultiCriterionInput) criterionHandler {
+	return &joinedStudioTagsHandler{
+		criterion:      tags,
+		primaryTable:   imageTable,
+	}
+}
+
 func (qb *sceneFilterHandler) phashDistanceCriterionHandler(phashDistance *models.PhashDistanceCriterionInput) criterionHandlerFunc {
 	return func(ctx context.Context, f *filterBuilder) {
 		if phashDistance != nil {
