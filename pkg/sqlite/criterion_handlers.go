@@ -1011,8 +1011,6 @@ func (h *joinedStudioTagsHandler) handle(ctx context.Context, f *filterBuilder) 
 
 		strFormatMap := utils.StrFormatMap{
 			"primaryTable":   h.primaryTable,
-			"joinTable":      h.joinTable,
-			"joinPrimaryKey": h.joinPrimaryKey,
 			"inBinding":      getInBinding(len(criterion.Value)),
 		}
 
@@ -1039,12 +1037,12 @@ func (h *joinedStudioTagsHandler) handle(ctx context.Context, f *filterBuilder) 
 				f.setError(err)
 				return
 			}
-
-			f.addWith(utils.StrFormat(`studios_tags AS (
-SELECT ps.{joinPrimaryKey} as primaryID, t.column1 AS root_tag_id FROM {joinTable} ps
-INNER JOIN studios_tags pt ON pt.studio_id = ps.studio_id
-INNER JOIN (`+valuesClause+`) t ON t.column2 = pt.tag_id
-)`, strFormatMap))
+			
+// 			f.addWith(utils.StrFormat(`studios_tags AS (
+// SELECT ps.{joinPrimaryKey} as primaryID, t.column1 AS root_tag_id FROM {joinTable} ps
+// INNER JOIN studios_tags pt ON pt.studio_id = ps.studio_id
+// INNER JOIN (`+valuesClause+`) t ON t.column2 = pt.tag_id
+// )`, strFormatMap))
 
 			f.addLeftJoin("studio_tags", "", utils.StrFormat("studio_tags.primaryID = {primaryTable}.id", strFormatMap))
 
@@ -1058,7 +1056,8 @@ INNER JOIN (`+valuesClause+`) t ON t.column2 = pt.tag_id
 				return
 			}
 
-			clause := utils.StrFormat("{primaryTable}.id NOT IN (SELECT {joinTable}.{joinPrimaryKey} FROM {joinTable} INNER JOIN studios_tags ON {joinTable}.studio_id = studios_tags.studio_id WHERE studios_tags.tag_id IN (SELECT column2 FROM (%s)))", strFormatMap)
+			// clause := utils.StrFormat("{primaryTable}.id NOT IN (SELECT {joinTable}.{joinPrimaryKey} FROM {joinTable} INNER JOIN studios_tags ON {joinTable}.studio_id = studios_tags.studio_id WHERE studios_tags.tag_id IN (SELECT column2 FROM (%s)))", strFormatMap)
+			clause := utils.StrFormat("{primaryTable}.id NOT IN (SELECT column2 FROM (%s))", strFormatMap)
 			f.addWhere(fmt.Sprintf(clause, valuesClause))
 		}
 	}
