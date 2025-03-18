@@ -110,7 +110,7 @@ const criterionOptions = [
   createMandatoryNumberCriterionOption("performer_count"),
   createMandatoryNumberCriterionOption("performer_age"),
   PerformerFavoriteCriterionOption,
-  // StudioTagsCriterionOption,
+  StudioTagsCriterionOption,
   StudiosCriterionOption,
   GroupsCriterionOption,
   LegacyMoviesCriterionOption,
